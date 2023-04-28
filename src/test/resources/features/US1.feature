@@ -20,7 +20,17 @@ Feature: US1 -  Création de compte client
 	#On vérifie que  le pavé “Register” est disponible dans l’espace “My account”
 	@TEST_POEI23P2G2-45 @TNR @autom
 	Scenario: Valider que le pavé “Register” est disponible dans l’espace “My account”
-
 		Given J ouvre l application
-		When  Je vais dans l espace <My account>
-		Then  Le pavé <Register> s affiche
+		When  Je vais dans l espace My account
+		Then  le pavé Register s affiche
+	#On vérifie que l’utilisateur peut créer un compte dans le pavé “Register”
+	@TEST_POEI23P2G2-47 @TNR
+	Scenario Outline: Valider que l’utilisateur peut créer un compte dans le pavé “Register” 
+		Given Je suis sur le pavé Register
+		And Je saisis mon adresse e-mail "<email>" et mon mot de passe "<password>" et Je clique sur le bouton REGISTER
+		Then Je suis redirigé vers la page My Account
+		And Je vois le message de confirmation "<Msg-success>"
+		
+		 Examples:
+				|email               |password     |Msg-success                      |
+				|ranch@test.com      |Windmac1405  |Hello ranch (not ranch? Sign out)|

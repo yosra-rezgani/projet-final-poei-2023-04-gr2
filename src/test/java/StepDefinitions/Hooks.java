@@ -16,7 +16,7 @@ public class Hooks {
     public static WebDriver driver;
 
     @Before
-    public void setup() {
+    public void setup() throws Exception {
         //WebDriverManager.chromedriver().setup();
 
         /**
@@ -29,6 +29,9 @@ public class Hooks {
         driver.manage().window().maximize();
 
     }
+
+
+    /*
     @After
     public void embedScreenshot(Scenario scenario) {
 
@@ -42,6 +45,9 @@ public class Hooks {
         }
         driver.quit();
     }
+
+
+*/
 }
 
 
