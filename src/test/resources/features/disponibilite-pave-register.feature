@@ -20,7 +20,7 @@ Feature: US1 -  Création de compte client
 	#On vérifie que  le pavé “Register” est disponible dans l’espace “My account”
 	@TEST_POEI23P2G2-45 @TNR @autom
 	Scenario: Valider que le pavé “Register” est disponible dans l’espace “My account”
-		Scenario: Vérifier 
-		Given J ouvre l application' "https://practice.automationtesting.in/"
-		When  Je vais dans l espace "My account"
-		Then  Vérifier que le pavé "Register" s affiche
+
+		Given J ouvre l application
+		When  Je vais dans l espace <My account>
+		Then  Le pavé <Register> s affiche
