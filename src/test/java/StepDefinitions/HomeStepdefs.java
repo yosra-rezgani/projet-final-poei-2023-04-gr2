@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -24,8 +25,7 @@ public class HomeStepdefs {
 
     @When("Je vais dans l espace My account")
     public void jeVaisDansLEspaceMyAccount() {
-        Hooks.driver.get(url);
-
+       // Hooks.driver.get(url);
         homePage.goToLoginPage();
         homePage.closeGoogleAds();
     }
@@ -33,9 +33,15 @@ public class HomeStepdefs {
     @Given("Je suis sur le pavé Register")
     public void jeSuisSurLePavéRegister() {
         Hooks.driver.get(url);
-
         homePage.goToLoginPage();
         homePage.closeGoogleAds();
 
+    }
+
+
+    @And("Je suis dans l espace My account")
+    public void jeSuisDansLEspaceMyAccount() {
+        homePage.goToLoginPage();
+        homePage.closeGoogleAds();
     }
 }

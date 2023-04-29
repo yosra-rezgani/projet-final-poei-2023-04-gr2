@@ -28,7 +28,18 @@ public class Hooks {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
 
+
     }
+
+
+
+
+
+    @Before(order=2, value="@siteOpened")
+    public void beforeScenario() {
+        driver.get("https://practice.automationtesting.in/");
+    }
+
 
 
     /*

@@ -24,7 +24,7 @@ Feature: US1 -  Création de compte client
 		When  Je vais dans l espace My account
 		Then  le pavé Register s affiche
 	#On vérifie que l’utilisateur peut créer un compte dans le pavé “Register”
-	@TEST_POEI23P2G2-47 @TNR
+	@TEST_POEI23P2G2-47 @TNR @manual
 	Scenario Outline: Valider que l’utilisateur peut créer un compte dans le pavé “Register” 
 		Given Je suis sur le pavé Register
 		And Je saisis mon adresse e-mail "<email>" et mon mot de passe "<password>" et Je clique sur le bouton REGISTER
@@ -33,4 +33,16 @@ Feature: US1 -  Création de compte client
 		
 		 Examples:
 				|email               |password     |Msg-success                      |
-				|ranch@test.com      |Windmac1405  |Hello ranch (not ranch? Sign out)|
+				|aynar@yahoo.com      |Windmac1405  |Hello aynar|
+	#On vérifie  que le mot de passe répond aux exigences de l’application
+	@TEST_POEI23P2G2-48 @TNR @autom
+	Scenario Outline: Valider que le mot de passe doit répondre aux exigences de l’application
+		Given Je suis sur le pavé Register
+		When Je renseigne mon adresse e-mail "<email>" et mon mot de passe "<password>"
+		Then Je reste sur la page d inscription
+		And Le bouton <Register> est désactivé
+		And Je vois un message d'erreur qui commence par "<Msg-error>"
+
+		Examples:
+			|email             |password |Msg-error|
+			|arij@test.com     |mdp123   |The password should be at least seven characters long|
