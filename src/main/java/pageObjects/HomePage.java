@@ -10,12 +10,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage {
+public class HomePage  extends  BasePage{
 
 
-    @FindBy(css = "#main-nav li:nth-child(2)")
+    @FindBy(id = "menu-item-50")
     private WebElement myAccount;
-
+    @FindBy(id = "menu-item-40")
+    private WebElement shop;
     @FindBy(id = "dismiss-button")
     private WebElement btnCloseGoogleAd;
 
@@ -26,27 +27,43 @@ public class HomePage {
     private WebElement secondIframeGoogleAd;
 
 
-    private  WebDriver driver;
+    @FindBy(css = "#n2-ss-6 img")
+    private WebElement homePageImg;
+
+   // private  WebDriver driver;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+       // this.driver = driver;
+       // PageFactory.initElements(driver, this);
     }
 
     public void goToLoginPage() {
        myAccount.click();
 
     }
+    public void goToShopPage() {
+        shop.click();
 
+    }
     public void closeGoogleAds() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         WebElement iFrame = firstIframeGoogleAd;
+        wait.until(ExpectedConditions.visibilityOf(iFrame));
         driver.switchTo().frame(iFrame);
         WebElement iFrame2 = secondIframeGoogleAd;
 
+        wait.until(ExpectedConditions.visibilityOf(iFrame2));
         driver.switchTo().frame(iFrame2);
+
+
+        wait.until(ExpectedConditions.elementToBeClickable(btnCloseGoogleAd));
         btnCloseGoogleAd.click();
         driver.switchTo().defaultContent();
-
     }
+    public  boolean doesLogoRedirectToHomePage(){
+       return homePageImg.isDisplayed();
+    }
+
 }

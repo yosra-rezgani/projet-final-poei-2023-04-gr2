@@ -13,7 +13,8 @@ import java.security.NoSuchAlgorithmException;
         features = "src/test/resources/features",
         glue = "StepDefinitions",
         plugin = { "pretty", "html:target/cucumber-reports","json:target/cucumber.json" },
-        monochrome = true
+        monochrome = true,
+        tags = {"@ranya"}
 
 )
 public class TestsRunner {
