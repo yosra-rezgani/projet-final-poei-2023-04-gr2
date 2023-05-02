@@ -27,7 +27,7 @@ Feature: US1 -  Création de compte client
 	@TEST_POEI23P2G2-47 @TNR @manual
 	Scenario Outline: Valider que l’utilisateur peut créer un compte dans le pavé “Register” 
 		Given Je suis sur le pavé Register
-		And Je saisis mon adresse e-mail "<email>" et mon mot de passe "<password>" et Je clique sur le bouton REGISTER
+		When Je saisis mon adresse e-mail "<email>" et mon mot de passe "<password>" et Je clique sur le bouton REGISTER
 		Then Je suis redirigé vers la page My Account
 		And Je vois le message de confirmation "<Msg-success>"
 		

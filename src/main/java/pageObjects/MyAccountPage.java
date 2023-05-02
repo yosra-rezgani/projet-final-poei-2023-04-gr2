@@ -9,10 +9,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MyAccountPage {
+public class MyAccountPage extends  BasePage {
 
     @FindBy(css = "[name=register]")
     private WebElement registerBtn;
+
+    //Locating Login Button
     @FindBy(css = "[name=login]")
     private WebElement loginBtn;
     @FindBy(id = "reg_email")
@@ -31,7 +33,6 @@ public class MyAccountPage {
     private WebElement rememberMe;
 
 
-    //Locating Login Button
     @FindBy(css = ".u-column2 h2")
     private WebElement registerTitle;
 
@@ -71,12 +72,20 @@ public class MyAccountPage {
 
     @FindBy(css = ".woocommerce-error li")
     private WebElement loginErrorMsg;
-    private WebDriver driver;
+
+    @FindBy(css = "div.woocommerce-MyAccount-content a[href*='customer-logout']")
+    private WebElement signOut;
+
+    @FindBy(css = "#site-logo a")
+    private WebElement logo;
+
+   // private WebDriver driver;
 
 
     public MyAccountPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+       //this.driver = driver;
+       // PageFactory.initElements(driver, this);
 
     }
 
@@ -93,7 +102,7 @@ public class MyAccountPage {
 
     public void loginAction(String username, String pwd){
         this.username.sendKeys(username);
-        this.password.sendKeys(pwd);
+        password.sendKeys(pwd);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.elementToBeClickable(loginBtn));
         loginBtn.click();
@@ -101,18 +110,18 @@ public class MyAccountPage {
 
     //Method that performs register action using the web elements
     public void registerWithStrongPasswordAction(String username, String pwd){
-        this.reg_email.sendKeys(username);
-        this.reg_password.sendKeys(pwd);
-        this.reg_password.click();
+     reg_email.sendKeys(username);
+        reg_password.sendKeys(pwd);
+        reg_password.click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(strenthPwdInformation));
         registerBtn.click();
     }
 
     public void registerWithWeakPasswordAction(String username, String pwd){
-        this.reg_email.sendKeys(username);
-        this.reg_password.sendKeys(pwd);
-        this.reg_password.click();
+        reg_email.sendKeys(username);
+        reg_password.sendKeys(pwd);
+        reg_password.click();
     }
     public String isMyAccountTheCurrentItem(){
 
@@ -123,10 +132,6 @@ public class MyAccountPage {
         return welcomeText.getText();
     }
 
-    public void setUsernameAndPassword(String username, String pwd){
-        this.username.sendKeys(username);
-        this.password.sendKeys(pwd);
-    }
 
     public String passwordHintText(){
         return passwordHint.getText();
@@ -145,6 +150,23 @@ public class MyAccountPage {
     }
 
     public void checkRememberMe(){
-        
+        rememberMe.click();
+    }
+    public void loginAndRememberMeAction(String username, String pwd){
+        this.username.sendKeys(username);
+        password.sendKeys(pwd);
+        checkRememberMe();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(loginBtn));
+        loginBtn.click();
+    }
+
+    public void signOut(){
+        signOut.click();
+    }
+
+    public String getValueofUsernameField(){
+       return username.getAttribute("value");
+
     }
 }

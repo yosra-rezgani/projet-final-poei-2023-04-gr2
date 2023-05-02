@@ -34,15 +34,15 @@ public class Hooks {
 
 
 
-
+/*
     @Before(order=2, value="@siteOpened")
     public void beforeScenario() {
         driver.get("https://practice.automationtesting.in/");
     }
 
+*/
 
 
-    /*
     @After
     public void embedScreenshot(Scenario scenario) {
 
@@ -58,7 +58,7 @@ public class Hooks {
     }
 
 
-*/
+
 }
 
 

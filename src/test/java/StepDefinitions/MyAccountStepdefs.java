@@ -36,7 +36,7 @@ public class MyAccountStepdefs {
 
     }
 
-    @And("Je saisis mon adresse e-mail {string} et mon mot de passe {string} et Je clique sur le bouton REGISTER")
+    @When("Je saisis mon adresse e-mail {string} et mon mot de passe {string} et Je clique sur le bouton REGISTER")
     public void jeSaisisMonAdresseEMailEtMonMotDePasseEtJeCliqueSurLeBoutonREGISTER(String email, String pwd) {
         accountPage.registerWithStrongPasswordAction(email,pwd);
 
@@ -95,8 +95,37 @@ public class MyAccountStepdefs {
 
     }
 
-    @When("je saisie le login {string} et le mot de passe {string}")
-    public void jeSaisieLeLoginEtLeMotDePasse(String username, String password) {
-        accountPage.setUsernameAndPassword(username,password);
+    @Then("le login {string} doit etre pré-rempli dans le champs du username")
+    public void leLoginDoitEtrePréRempliDansLeChampsDuUsername(String expectedUsername) {
+        System.out.println("expectedUsername " + expectedUsername);
+        System.out.println(" accountPage.getValueofUsernameField() " +  accountPage.getValueofUsernameField());
+        Assert.assertEquals("Le login n'est pas prérempli correctement", expectedUsername, accountPage.getValueofUsernameField());
+    }
+
+    @When("je me déconnecte et revient sur le pavé <Login>")
+    public void jeMeDéconnecteEtRevientSurLePavéLogin() {
+        accountPage.signOut();
+    }
+
+    @And("Je suis connecté avec le login {string} et le mot de passe {string} en cochant Remember me")
+    public void jeSuisConnectéAvecLeLoginEtLeMotDePasseEnCochantRememberMe(String username, String password) {
+
+        accountPage.loginAndRememberMeAction(username,password);
+    }
+
+    @And("je suis connecté avec le login {string} et le mot de passe {string}")
+    public void jeSuisConnectéAvecLeLoginEtLeMotDePasse(String username, String password) {
+        accountPage.loginAction(username,password);
+    }
+
+    @When("je clique sur le lien de “logout”")
+    public void jeCliqueSurLeLienDeLogout() {
+        accountPage.signOut();
+    }
+
+    @Then("je suis  redirigé vers les pavé de Login et de Register")
+    public void jeSuisRedirigéVersLesPavéDeLoginEtDeRegister() {
+        Assert.assertTrue(accountPage.checkLoginIsDisplayed());
+        Assert.assertTrue(accountPage.checkRegisterIsDisplayed());
     }
 }
