@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -47,20 +48,25 @@ public class HomePage  extends  BasePage{
 
     }
     public void closeGoogleAds() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement iFrame = firstIframeGoogleAd;
-        wait.until(ExpectedConditions.visibilityOf(iFrame));
-        driver.switchTo().frame(iFrame);
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iFrame));
+       // driver.switchTo().frame(iFrame);
         WebElement iFrame2 = secondIframeGoogleAd;
 
-        wait.until(ExpectedConditions.visibilityOf(iFrame2));
-        driver.switchTo().frame(iFrame2);
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iFrame2));
+       // driver.switchTo().frame(iFrame2);
 
 
         wait.until(ExpectedConditions.elementToBeClickable(btnCloseGoogleAd));
         btnCloseGoogleAd.click();
         driver.switchTo().defaultContent();
+
+
+
+       // new Actions(driver).moveByOffset(10, 10).click().build().perform();
     }
     public  boolean doesLogoRedirectToHomePage(){
        return homePageImg.isDisplayed();

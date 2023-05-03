@@ -21,7 +21,7 @@ Feature: US2:Connexion à un compte
 		When  Je vais dans l espace My account
 		Then  le pavé Login s affiche
 	#Dans l’espace “Dashbord”, on doit valider  la présence de liens qui redirigent l’utilisateur vers les pages: Orders, Download, Adresses, Account Details, Logout
-	@TEST_POEI23P2G2-85 @TNR @autom
+	@TEST_POEI23P2G2-85 @TNR @autom @ranya
 	Scenario Outline: Valider que l’utilisateur a la possibilité de se connecter à son compte en saisissant un login et un mot de passe et est redirigé vers un espace Dashbord 
 
 		And Je suis dans l espace My account
@@ -32,7 +32,7 @@ Feature: US2:Connexion à un compte
 		 Examples:
 						|username            |password    |
 						|aynar@test.com      |Windmac1405 |
-	@TEST_POEI23P2G2-87 @TNR @autom
+	@TEST_POEI23P2G2-87 @TNR @autom @ranya
 	Scenario Outline: Valider que  le message "ERROR: The password you entered for the username "Email" incorrect” s’affiche dans le cas où l’utilisateur saisie un mot de passe erroné
 
 		And Je suis dans l espace My account

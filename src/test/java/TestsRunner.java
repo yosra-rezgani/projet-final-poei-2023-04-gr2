@@ -18,7 +18,8 @@ import java.security.NoSuchAlgorithmException;
 
 )
 public class TestsRunner {
-/*
+
+    /*
     @AfterClass
     public static void importResultToXray() throws IOException, NoSuchAlgorithmException, KeyStoreException, InterruptedException, KeyManagementException {
 
