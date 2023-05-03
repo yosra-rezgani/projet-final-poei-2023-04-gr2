@@ -123,6 +123,12 @@ public class MyAccountPage extends  BasePage {
         reg_password.sendKeys(pwd);
         reg_password.click();
     }
+
+    public void setUsernameAndPassword(String username, String pwd){
+        reg_email.sendKeys(username);
+        reg_password.sendKeys(pwd);
+        reg_password.click();
+    }
     public String isMyAccountTheCurrentItem(){
 
         return myAccountItem.getText();

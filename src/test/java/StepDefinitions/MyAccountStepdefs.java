@@ -128,4 +128,14 @@ public class MyAccountStepdefs {
         Assert.assertTrue(accountPage.checkLoginIsDisplayed());
         Assert.assertTrue(accountPage.checkRegisterIsDisplayed());
     }
+
+    @When("Je remplie le champs adresse e-mail {string} et mot de passe {string}")
+    public void jeRemplieLeChampsAdresseEMailEtMotDePasse(String username, String pwd) {
+        accountPage.setUsernameAndPassword(username,pwd);
+    }
+
+    @Then("Le bouton <Register> est activé")
+    public void leBoutonRegisterEstActivé() {
+        Assert.assertFalse("Le bouton de création de compte est activé",accountPage.isRegisterBtnDisabled());
+    }
 }
