@@ -14,17 +14,16 @@ import java.security.NoSuchAlgorithmException;
         glue = "StepDefinitions",
         plugin = { "pretty", "html:target/cucumber-reports","json:target/cucumber.json" },
         monochrome = true,
-        tags = {"@ranya"}
+        tags = {"@a"}
 
 )
 public class TestsRunner {
 
-    /*
+
     @AfterClass
     public static void importResultToXray() throws IOException, NoSuchAlgorithmException, KeyStoreException, InterruptedException, KeyManagementException {
 
         ImportResultToXray.ImportToXray();
     }
-*/
 
 }

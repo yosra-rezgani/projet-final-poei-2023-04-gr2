@@ -50,21 +50,11 @@ public class HomePage  extends  BasePage{
     public void closeGoogleAds() {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        WebElement iFrame = firstIframeGoogleAd;
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iFrame));
-       // driver.switchTo().frame(iFrame);
-        WebElement iFrame2 = secondIframeGoogleAd;
-
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iFrame2));
-       // driver.switchTo().frame(iFrame2);
-
-
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(firstIframeGoogleAd));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(secondIframeGoogleAd));
         wait.until(ExpectedConditions.elementToBeClickable(btnCloseGoogleAd));
         btnCloseGoogleAd.click();
         driver.switchTo().defaultContent();
-
-
 
        // new Actions(driver).moveByOffset(10, 10).click().build().perform();
     }

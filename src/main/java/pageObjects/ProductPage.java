@@ -7,6 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage  extends  BasePage{
 
+
+    @FindBy(css = "#tab-description h2")
+    private WebElement prodcutDescription;
    // private WebDriver driver;
 
 
@@ -18,5 +21,7 @@ public class ProductPage  extends  BasePage{
       //  this.driver = driver;
       //  PageFactory.initElements(driver, this);
     }
-
+    public boolean  isProductPage() {
+        return prodcutDescription.isDisplayed();
+    }
 }
