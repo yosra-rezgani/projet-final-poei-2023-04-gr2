@@ -24,8 +24,8 @@ import java.security.NoSuchAlgorithmException;
 
 public class ImportResultToXray {
 
-    static String clientID = "75DBB848835347979FFDC13A67B523FA";
-    static String clientSecret = "92edce184d522984644ed0cfb607b22014d3a39e16dbe46c5ac99214ad977598";
+    static String clientID = "E36F4BEDDB2745A3BE2515D9E486CD7E";
+    static String clientSecret = "e44c963971017aa72e30aabf1eb16510e73628762522d315e073b4ebe3475b4d";
 
     public ImportResultToXray(){
 
